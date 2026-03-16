@@ -1,0 +1,4028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mirra — Think Deeper. Score Higher.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN SYSTEM
+   Aesthetic: Scholarly luxury — the intelligence
+   of The Economist meets the warmth of a great
+   teacher. Deep forest greens, warm ivory, 
+   Cormorant for editorial gravitas.
+═══════════════════════════════════════════════ */
+
+:root {
+  --forest:    #1a3d2b;
+  --forest-2:  #2d6a4f;
+  --forest-3:  #40916c;
+  --sage:      #74b49b;
+  --mist:      #a8c5b5;
+  --ivory:     #f7f3eb;
+  --ivory-2:   #efe9dc;
+  --ivory-3:   #e4dace;
+  --gold:      #c9963b;
+  --gold-2:    #e8b45e;
+  --charcoal:  #1c1c1c;
+  --ink:       #2a2a2a;
+  --stone:     #5a5a5a;
+  --pebble:    #8a8a8a;
+  --white:     #ffffff;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Outfit', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:   cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--ivory);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Page System ─────────────────────────────── */
+.page { display: none; min-height: 100vh; }
+.page.active { display: block; }
+
+/* ── Navigation ──────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 48px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(247, 243, 235, 0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(26,61,43,0.08);
+  transition: all 0.3s var(--ease-in-out);
+}
+
+nav.scrolled {
+  height: 60px;
+  box-shadow: 0 4px 32px rgba(26,61,43,0.08);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--forest);
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-logo-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--stone);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.nav-links a:hover { color: var(--forest); background: rgba(26,61,43,0.06); }
+.nav-links a.active { color: var(--forest); font-weight: 600; }
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-nav-secondary {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--forest);
+  background: none;
+  border: 1.5px solid rgba(26,61,43,0.3);
+  padding: 9px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.btn-nav-secondary:hover { border-color: var(--forest); background: rgba(26,61,43,0.04); }
+
+.btn-nav-primary {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ivory);
+  background: var(--forest);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.btn-nav-primary:hover { background: var(--forest-2); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,61,43,0.25); }
+
+/* ── Shared Section Styles ───────────────────── */
+section {
+  padding: 120px 0;
+}
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.container-narrow {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-3);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--forest);
+  letter-spacing: -1px;
+}
+
+.section-headline em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.section-subhead {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--stone);
+  line-height: 1.7;
+  margin-top: 20px;
+  max-width: 560px;
+}
+
+/* ── Divider ─────────────────────────────────── */
+.rule {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  margin: 24px 0;
+}
+
+/* ── Buttons ─────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ivory);
+  background: var(--forest);
+  border: none;
+  padding: 16px 36px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out-expo);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.btn-primary:hover {
+  background: var(--forest-2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(26,61,43,0.3);
+}
+.btn-primary .arrow { transition: transform 0.2s; }
+.btn-primary:hover .arrow { transform: translateX(4px); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--forest);
+  background: transparent;
+  border: 2px solid rgba(26,61,43,0.25);
+  padding: 14px 32px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.btn-secondary:hover { border-color: var(--forest); background: rgba(26,61,43,0.04); }
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  background: var(--gold-2);
+  border: none;
+  padding: 16px 36px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out-expo);
+  text-decoration: none;
+}
+.btn-gold:hover {
+  background: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(201,150,59,0.35);
+}
+
+/* ── Fade-in animation ───────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.animate { opacity: 0; }
+.animate.in { animation: fadeUp 0.7s var(--ease-out-expo) forwards; }
+.animate.in-fast { animation: fadeUp 0.5s var(--ease-out-expo) forwards; }
+.d1 { animation-delay: 0.1s !important; }
+.d2 { animation-delay: 0.2s !important; }
+.d3 { animation-delay: 0.3s !important; }
+.d4 { animation-delay: 0.4s !important; }
+.d5 { animation-delay: 0.5s !important; }
+.d6 { animation-delay: 0.6s !important; }
+
+/* ════════════════════════════════════════════════
+   PAGE 1: HOME
+════════════════════════════════════════════════ */
+
+/* ── Hero ────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 72px;
+  background: var(--ivory);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-circle-1 {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  right: -200px;
+  top: -100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(45,106,79,0.12) 0%, transparent 70%);
+}
+
+.hero-circle-2 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  left: -100px;
+  bottom: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,150,59,0.08) 0%, transparent 70%);
+}
+
+.hero-line {
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(26,61,43,0.1), transparent);
+}
+.hero-line:nth-child(3) { top: 30%; }
+.hero-line:nth-child(4) { top: 65%; }
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  min-height: calc(100vh - 72px);
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-3);
+  background: rgba(64,145,108,0.1);
+  border: 1px solid rgba(64,145,108,0.2);
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+
+.hero-eyebrow-dot {
+  width: 6px; height: 6px;
+  background: var(--forest-3);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 6vw, 80px);
+  font-weight: 600;
+  line-height: 1.0;
+  color: var(--forest);
+  letter-spacing: -2px;
+  margin-bottom: 28px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+}
+
+.hero-body {
+  font-size: 19px;
+  line-height: 1.75;
+  color: var(--stone);
+  margin-bottom: 48px;
+  max-width: 480px;
+  font-weight: 400;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-proof {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 48px;
+  font-size: 13px;
+  color: var(--pebble);
+}
+
+.hero-proof-avatars {
+  display: flex;
+}
+
+.hero-proof-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--ivory);
+  margin-left: -8px;
+  background: var(--ivory-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+.hero-proof-avatar:first-child { margin-left: 0; }
+
+.hero-proof-text strong { color: var(--ink); font-weight: 600; }
+
+/* Hero visual — floating chat demo */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-demo {
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: 0 32px 80px rgba(26,61,43,0.15), 0 2px 8px rgba(26,61,43,0.06);
+  padding: 0;
+  width: 100%;
+  max-width: 440px;
+  overflow: hidden;
+  border: 1px solid rgba(26,61,43,0.08);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.chat-header {
+  background: var(--forest);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-header-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+}
+
+.chat-header-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.95);
+  letter-spacing: -0.3px;
+}
+
+.chat-header-status {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--sage);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.chat-status-dot {
+  width: 6px; height: 6px;
+  background: var(--sage);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+.chat-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--ivory-2);
+  min-height: 300px;
+}
+
+.chat-topic-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest-3);
+  background: rgba(64,145,108,0.1);
+  border: 1px solid rgba(64,145,108,0.2);
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.chat-bubble {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.chat-bubble.student { flex-direction: row-reverse; }
+
+.bubble-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.bubble-avatar.mirra-av { background: var(--forest); color: var(--ivory); font-family: var(--font-display); font-weight: 700; font-size: 14px; }
+.bubble-avatar.student-av { background: var(--ivory-3); color: var(--stone); font-size: 14px; }
+
+.bubble-text {
+  max-width: 82%;
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: var(--font-body);
+}
+
+.bubble-text.mirra {
+  background: var(--white);
+  color: var(--ink);
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 8px rgba(26,61,43,0.07);
+  font-style: italic;
+  color: var(--forest);
+}
+
+.bubble-text.student {
+  background: var(--forest);
+  color: rgba(255,255,255,0.95);
+  border-bottom-right-radius: 4px;
+}
+
+.chat-typing {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.typing-dots {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px;
+  background: var(--white);
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+}
+
+.typing-dot {
+  width: 6px; height: 6px;
+  background: var(--mist);
+  border-radius: 50%;
+  animation: typing 1.4s ease infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing {
+  0%, 80%, 100% { transform: scale(0.8); opacity: 0.4; }
+  40% { transform: scale(1.1); opacity: 1; }
+}
+
+.chat-footer {
+  padding: 16px 20px;
+  background: var(--white);
+  border-top: 1px solid var(--ivory-3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-input-mock {
+  flex: 1;
+  height: 38px;
+  background: var(--ivory);
+  border-radius: 8px;
+  border: 1px solid var(--ivory-3);
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-size: 13px;
+  color: var(--pebble);
+  font-family: var(--font-body);
+}
+
+.chat-send-btn {
+  width: 38px; height: 38px;
+  background: var(--forest);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: white;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* Floating labels */
+.hero-float-label {
+  position: absolute;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 8px 32px rgba(26,61,43,0.12);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  border: 1px solid rgba(26,61,43,0.06);
+}
+
+.hero-float-1 {
+  top: 12%;
+  right: -30px;
+  animation: float 5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.hero-float-2 {
+  bottom: 18%;
+  left: -20px;
+  animation: float 7s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.float-icon { font-size: 18px; }
+
+/* ── Logos / Social proof ─────────────────────── */
+.logos-section {
+  padding: 48px 0 80px;
+  border-top: 1px solid rgba(26,61,43,0.08);
+  background: var(--ivory);
+}
+
+.logos-label {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pebble);
+  margin-bottom: 32px;
+}
+
+.logos-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.school-logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--mist);
+  letter-spacing: -0.3px;
+  transition: color 0.2s;
+  cursor: default;
+}
+.school-logo:hover { color: var(--stone); }
+
+/* ── Problem section ─────────────────────────── */
+.problem-section {
+  background: var(--forest);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.problem-bg-text {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 320px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.02);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: -10px;
+  user-select: none;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.problem-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.problem-headline {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4vw, 58px);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--ivory);
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+}
+
+.problem-headline em {
+  color: var(--gold-2);
+  font-style: italic;
+}
+
+.problem-body {
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(247,243,235,0.7);
+  margin-bottom: 40px;
+}
+
+.problem-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.problem-stat {
+  padding: 28px 24px;
+  background: rgba(255,255,255,0.04);
+}
+
+.problem-stat-num {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--gold-2);
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.problem-stat-label {
+  font-size: 13px;
+  color: rgba(247,243,235,0.6);
+  line-height: 1.4;
+}
+
+.problem-quotes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.problem-quote-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 28px;
+  position: relative;
+  transition: background 0.3s;
+}
+.problem-quote-card:hover { background: rgba(255,255,255,0.09); }
+
+.quote-mark {
+  font-family: var(--font-display);
+  font-size: 64px;
+  color: var(--gold-2);
+  line-height: 0.5;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  opacity: 0.4;
+}
+
+.problem-quote-text {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--ivory);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  padding-left: 8px;
+}
+
+.problem-quote-source {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quote-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--forest-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.quote-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ivory);
+}
+.quote-detail {
+  font-size: 12px;
+  color: rgba(247,243,235,0.5);
+  margin-top: 1px;
+  font-family: var(--font-mono);
+}
+
+/* ── Intro to Mirra ───────────────────────────── */
+.intro-section {
+  padding: 140px 0;
+  background: var(--ivory);
+  text-align: center;
+}
+
+.intro-big-text {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+  letter-spacing: -1px;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.intro-big-text em { color: var(--forest); font-style: italic; }
+.intro-big-text strong { color: var(--gold); font-weight: 700; }
+
+.intro-rule {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--forest-3), transparent);
+  margin: 60px auto;
+}
+
+.intro-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 80px;
+  text-align: left;
+}
+
+.pillar {
+  padding: 36px;
+  border-radius: 20px;
+  background: var(--white);
+  border: 1px solid rgba(26,61,43,0.08);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s var(--ease-out-expo);
+}
+.pillar:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(26,61,43,0.1); border-color: rgba(26,61,43,0.15); }
+
+.pillar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--forest), var(--forest-3));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.pillar:hover::before { opacity: 1; }
+
+.pillar-num {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 700;
+  color: rgba(26,61,43,0.08);
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: -2px;
+}
+
+.pillar-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+
+.pillar-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.pillar-body {
+  font-size: 15px;
+  color: var(--stone);
+  line-height: 1.7;
+}
+
+/* ════════════════════════════════════════════════
+   PAGE 2: HOW IT WORKS
+════════════════════════════════════════════════ */
+
+.how-hero {
+  background: var(--forest);
+  padding: 160px 0 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.how-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(64,145,108,0.2) 0%, transparent 70%);
+}
+
+.how-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: 600;
+  color: var(--ivory);
+  letter-spacing: -2px;
+  line-height: 1.0;
+  position: relative;
+  z-index: 1;
+}
+
+.how-hero h1 em { color: var(--gold-2); font-style: italic; }
+
+.how-hero p {
+  font-size: 19px;
+  color: rgba(247,243,235,0.7);
+  max-width: 560px;
+  margin: 24px auto 0;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+/* Steps */
+.steps-section {
+  padding: 120px 0;
+  background: var(--ivory);
+}
+
+.steps-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 48px;
+  padding: 64px 0;
+  border-bottom: 1px solid rgba(26,61,43,0.08);
+  align-items: start;
+}
+.step:last-child { border-bottom: none; }
+
+.step:nth-child(even) .step-content { order: -1; }
+.step:nth-child(even) { grid-template-columns: 80px 1fr 1fr; }
+
+.step-num-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.step-num {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  flex-shrink: 0;
+}
+
+.step-line {
+  width: 1px;
+  flex: 1;
+  min-height: 60px;
+  background: linear-gradient(to bottom, rgba(26,61,43,0.25), transparent);
+  margin-top: 12px;
+}
+
+.step-content {}
+
+.step-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-3);
+  margin-bottom: 12px;
+}
+
+.step-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.step-body {
+  font-size: 16px;
+  color: var(--stone);
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.step-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.step-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.5;
+}
+
+.step-detail-item::before {
+  content: '→';
+  color: var(--forest-3);
+  font-size: 13px;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.step-visual {
+  background: var(--white);
+  border-radius: 20px;
+  border: 1px solid rgba(26,61,43,0.08);
+  padding: 32px;
+  box-shadow: 0 8px 40px rgba(26,61,43,0.07);
+}
+
+/* Conversation example cards */
+.conv-example {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.conv-line {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.conv-line.right { flex-direction: row-reverse; }
+
+.conv-av {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.conv-av.m { background: var(--forest); color: var(--ivory); font-family: var(--font-display); }
+.conv-av.s { background: var(--ivory-3); color: var(--stone); }
+
+.conv-text {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.conv-text.m {
+  background: rgba(26,61,43,0.06);
+  color: var(--forest);
+  font-style: italic;
+  border-bottom-left-radius: 4px;
+}
+
+.conv-text.s {
+  background: var(--forest);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.conv-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pebble);
+  text-align: center;
+  margin: 8px 0;
+  padding: 6px 0;
+  border-top: 1px dashed rgba(26,61,43,0.1);
+  border-bottom: 1px dashed rgba(26,61,43,0.1);
+}
+
+/* Gap detection visual */
+.gap-detect-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gap-tag-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(201,150,59,0.08);
+  border: 1px solid rgba(201,150,59,0.2);
+  border-radius: 12px;
+}
+
+.gap-tag-icon { font-size: 20px; flex-shrink: 0; }
+.gap-tag-text { font-size: 13px; color: var(--ink); line-height: 1.4; }
+.gap-tag-text strong { color: var(--gold); font-weight: 600; }
+.gap-tag-count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--pebble);
+  background: var(--ivory-3);
+  padding: 3px 8px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+/* Question types visual */
+.qtype-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.qtype-item {
+  padding: 14px;
+  background: var(--ivory);
+  border-radius: 10px;
+  border: 1px solid rgba(26,61,43,0.07);
+}
+
+.qtype-letter {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.qtype-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.qtype-example {
+  font-size: 11.5px;
+  color: var(--stone);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* ── Rules section ───────────────────────────── */
+.rules-section {
+  background: var(--ivory-2);
+  padding: 100px 0;
+}
+
+.rules-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(26,61,43,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(26,61,43,0.08);
+}
+
+.rule-card {
+  background: var(--white);
+  padding: 40px 32px;
+  position: relative;
+}
+
+.rule-num {
+  font-family: var(--font-display);
+  font-size: 80px;
+  font-weight: 700;
+  color: rgba(26,61,43,0.06);
+  line-height: 1;
+  position: absolute;
+  top: 16px;
+  right: 20px;
+}
+
+.rule-emoji { font-size: 28px; margin-bottom: 16px; }
+
+.rule-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+
+.rule-body {
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.65;
+}
+
+/* ════════════════════════════════════════════════
+   PAGE 3: FEATURES
+════════════════════════════════════════════════ */
+
+.features-hero {
+  padding: 160px 0 100px;
+  text-align: center;
+  background: var(--ivory);
+}
+
+.features-grid-section {
+  padding: 80px 0 120px;
+}
+
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(26,61,43,0.07);
+}
+.feature-row:last-child { border-bottom: none; }
+.feature-row.reverse .feature-visual-col { order: -1; }
+
+.feature-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--forest-3);
+  background: rgba(64,145,108,0.08);
+  border: 1px solid rgba(64,145,108,0.15);
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+.feature-title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -1px;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+.feature-title em { color: var(--gold); font-style: italic; }
+
+.feature-body {
+  font-size: 17px;
+  color: var(--stone);
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--stone);
+  line-height: 1.5;
+}
+
+.feature-list li::before {
+  content: '✦';
+  color: var(--forest-3);
+  font-size: 11px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.feature-visual-col {}
+
+.feature-card {
+  background: var(--white);
+  border-radius: 24px;
+  border: 1px solid rgba(26,61,43,0.08);
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(26,61,43,0.08);
+}
+
+.feature-card-header {
+  background: linear-gradient(135deg, var(--forest), var(--forest-2));
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fch-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.08em;
+}
+
+.fch-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--sage);
+  background: rgba(255,255,255,0.08);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+.feature-card-body { padding: 28px; }
+
+/* Personalization visual */
+.persona-bar {
+  margin-bottom: 20px;
+}
+
+.persona-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--stone);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.persona-bar-track {
+  height: 8px;
+  background: var(--ivory-2);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.persona-bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--forest), var(--forest-3));
+  transition: width 1s var(--ease-out-expo);
+}
+
+/* DNA visual */
+.dna-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--ivory);
+  margin-bottom: 10px;
+  border: 1px solid rgba(26,61,43,0.06);
+}
+
+.dna-icon { font-size: 22px; flex-shrink: 0; }
+.dna-content { flex: 1; }
+.dna-title { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.dna-sub { font-size: 12px; color: var(--pebble); }
+
+.dna-freq {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 100px;
+  background: var(--ivory-3);
+  color: var(--stone);
+  white-space: nowrap;
+}
+
+.dna-freq.high {
+  background: rgba(201,150,59,0.12);
+  color: var(--gold);
+}
+
+/* Assessment cards */
+.assessment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.assessment-card {
+  padding: 18px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(26,61,43,0.1);
+  background: var(--ivory);
+  cursor: default;
+  transition: all 0.2s;
+}
+
+.assessment-card:hover {
+  background: var(--white);
+  border-color: var(--forest-3);
+  box-shadow: 0 4px 20px rgba(26,61,43,0.08);
+}
+
+.assessment-card.active {
+  background: rgba(26,61,43,0.06);
+  border-color: var(--forest-2);
+}
+
+.assessment-icon { font-size: 22px; margin-bottom: 8px; }
+.assessment-name { font-size: 13px; font-weight: 700; color: var(--forest); margin-bottom: 3px; }
+.assessment-desc { font-size: 11.5px; color: var(--stone); line-height: 1.4; }
+
+/* ════════════════════════════════════════════════
+   PAGE 4: PRICING
+════════════════════════════════════════════════ */
+
+.pricing-hero {
+  padding: 160px 0 80px;
+  text-align: center;
+  background: var(--ivory);
+}
+
+.pricing-toggle {
+  display: inline-flex;
+  background: var(--ivory-2);
+  border: 1px solid rgba(26,61,43,0.1);
+  border-radius: 100px;
+  padding: 4px;
+  margin: 40px auto 0;
+  gap: 4px;
+}
+
+.toggle-opt {
+  padding: 10px 28px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--stone);
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.toggle-opt.active {
+  background: var(--forest);
+  color: var(--ivory);
+  box-shadow: 0 2px 8px rgba(26,61,43,0.2);
+}
+
+.savings-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gold);
+  background: rgba(201,150,59,0.1);
+  border: 1px solid rgba(201,150,59,0.2);
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-left: 8px;
+}
+
+.pricing-section {
+  padding: 60px 0 120px;
+  background: var(--ivory);
+}
+
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+
+.plan-card {
+  background: var(--white);
+  border-radius: 24px;
+  border: 1.5px solid rgba(26,61,43,0.1);
+  overflow: hidden;
+  transition: all 0.3s var(--ease-out-expo);
+  position: relative;
+}
+
+.plan-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 64px rgba(26,61,43,0.1);
+}
+
+.plan-card.featured {
+  border-color: var(--forest);
+  box-shadow: 0 12px 48px rgba(26,61,43,0.12);
+  transform: scale(1.02);
+}
+
+.plan-card.featured:hover {
+  transform: scale(1.02) translateY(-6px);
+}
+
+.plan-popular-badge {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--forest);
+  color: var(--ivory);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 20px;
+  border-radius: 0 0 10px 10px;
+}
+
+.plan-header {
+  padding: 36px 32px 28px;
+  border-bottom: 1px solid rgba(26,61,43,0.07);
+}
+
+.plan-name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.plan-tagline {
+  font-size: 13px;
+  color: var(--pebble);
+  margin-bottom: 24px;
+}
+
+.plan-price {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.plan-price-currency {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--stone);
+  margin-bottom: 4px;
+}
+
+.plan-price-amount {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--forest);
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.plan-price-period {
+  font-size: 14px;
+  color: var(--pebble);
+  margin-bottom: 6px;
+}
+
+.plan-questions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--forest-3);
+  background: rgba(64,145,108,0.08);
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-top: 12px;
+}
+
+.plan-body {
+  padding: 28px 32px 36px;
+}
+
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.4;
+}
+
+.plan-features li .check {
+  color: var(--forest-3);
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: -1px;
+}
+
+.plan-features li .cross {
+  color: var(--mist);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.plan-features li.disabled { opacity: 0.4; }
+
+.plan-cta {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.plan-cta.primary {
+  background: var(--forest);
+  color: var(--ivory);
+  border: none;
+}
+.plan-cta.primary:hover { background: var(--forest-2); box-shadow: 0 6px 24px rgba(26,61,43,0.25); }
+
+.plan-cta.outline {
+  background: transparent;
+  color: var(--forest);
+  border: 1.5px solid rgba(26,61,43,0.2);
+}
+.plan-cta.outline:hover { background: rgba(26,61,43,0.04); border-color: var(--forest-2); }
+
+/* Trial card */
+.trial-banner {
+  background: var(--forest);
+  border-radius: 20px;
+  padding: 48px 56px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.trial-banner-text h3 {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--ivory);
+  letter-spacing: -0.8px;
+  margin-bottom: 12px;
+}
+
+.trial-banner-text p {
+  font-size: 16px;
+  color: rgba(247,243,235,0.7);
+  line-height: 1.6;
+}
+
+.trial-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.trial-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: rgba(247,243,235,0.8);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+
+/* FAQ */
+.faq-section {
+  padding: 80px 0 120px;
+  background: var(--ivory-2);
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.faq-item {
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid rgba(26,61,43,0.08);
+  padding: 28px 32px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.faq-item:hover { border-color: rgba(26,61,43,0.15); box-shadow: 0 4px 20px rgba(26,61,43,0.06); }
+
+.faq-q {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -0.3px;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.faq-a {
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.7;
+}
+
+.faq-a strong { color: var(--forest); font-weight: 600; }
+
+/* ════════════════════════════════════════════════
+   PAGE 5: FOR SCHOOLS
+════════════════════════════════════════════════ */
+
+.schools-hero {
+  background: var(--forest);
+  padding: 160px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.schools-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.schools-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.schools-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 5vw, 68px);
+  font-weight: 600;
+  color: var(--ivory);
+  letter-spacing: -2px;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.schools-hero h1 em { color: var(--gold-2); font-style: italic; }
+
+.schools-hero p {
+  font-size: 18px;
+  color: rgba(247,243,235,0.7);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+/* Stats bar */
+.schools-stats {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: linear-gradient(rgba(255,255,255,0.08), rgba(255,255,255,0.08)),
+              linear-gradient(rgba(255,255,255,0.12), rgba(255,255,255,0.12));
+  background-clip: padding-box, border-box;
+}
+
+.schools-stat {
+  padding: 20px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.schools-stat:last-child { border-right: none; }
+
+.schools-stat-num {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--gold-2);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.schools-stat-label {
+  font-size: 13px;
+  color: rgba(247,243,235,0.6);
+}
+
+/* Dashboard preview */
+.dashboard-preview {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.3);
+}
+
+.dash-header {
+  background: var(--ivory-2);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(26,61,43,0.08);
+}
+
+.dash-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+
+.dash-dot:nth-child(1) { background: #ff5f56; }
+.dash-dot:nth-child(2) { background: #ffbd2e; }
+.dash-dot:nth-child(3) { background: #27c93f; }
+
+.dash-title {
+  margin-left: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--pebble);
+}
+
+.dash-body {
+  padding: 20px;
+  background: var(--ivory);
+}
+
+.dash-row-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pebble);
+  margin-bottom: 12px;
+}
+
+.dash-student-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--white);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  border: 1px solid rgba(26,61,43,0.06);
+}
+
+.dash-student-av {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--ivory-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.dash-student-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.dash-student-meta {
+  font-size: 11px;
+  color: var(--pebble);
+  margin-top: 1px;
+}
+
+.dash-student-sessions {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--forest-3);
+  background: rgba(64,145,108,0.08);
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+
+.dash-gap-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid rgba(201,150,59,0.2);
+  margin-bottom: 6px;
+}
+
+.dash-gap-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.dash-gap-text { font-size: 12px; color: var(--ink); }
+
+/* School benefits */
+.benefits-section {
+  padding: 120px 0;
+  background: var(--ivory);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 64px;
+}
+
+.benefit-card {
+  padding: 36px 28px;
+  background: var(--white);
+  border-radius: 20px;
+  border: 1px solid rgba(26,61,43,0.08);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(26,61,43,0.09);
+  border-color: rgba(26,61,43,0.14);
+}
+
+.benefit-icon {
+  font-size: 36px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.benefit-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -0.3px;
+  margin-bottom: 12px;
+}
+
+.benefit-body {
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.7;
+}
+
+/* Pilot section */
+.pilot-section {
+  background: var(--forest);
+  padding: 100px 0;
+}
+
+.pilot-inner {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.pilot-inner h2 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 600;
+  color: var(--ivory);
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.pilot-inner h2 em { color: var(--gold-2); font-style: italic; }
+
+.pilot-inner p {
+  font-size: 17px;
+  color: rgba(247,243,235,0.7);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.pilot-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 48px 0;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.pilot-step {
+  background: rgba(255,255,255,0.04);
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.pilot-step-num {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--gold-2);
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.pilot-step-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ivory);
+  margin-bottom: 6px;
+}
+
+.pilot-step-body {
+  font-size: 12px;
+  color: rgba(247,243,235,0.5);
+  line-height: 1.5;
+}
+
+/* ════════════════════════════════════════════════
+   PAGE 6: ABOUT / PHILOSOPHY
+════════════════════════════════════════════════ */
+
+.about-hero {
+  padding: 160px 0 80px;
+  background: var(--ivory);
+}
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.about-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 5vw, 68px);
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -2px;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.about-hero h1 em { color: var(--gold); font-style: italic; }
+
+.about-hero p {
+  font-size: 18px;
+  color: var(--stone);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.about-pull-quote {
+  border-left: 3px solid var(--gold);
+  padding-left: 24px;
+  margin: 40px 0;
+}
+
+.about-pull-quote p {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--forest);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.about-visual {
+  background: var(--forest);
+  border-radius: 24px;
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-visual-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 20%, rgba(64,145,108,0.4) 0%, transparent 60%);
+}
+
+.about-quote-card {
+  position: relative;
+  z-index: 1;
+}
+
+.about-quote-card blockquote {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-style: italic;
+  color: var(--ivory);
+  line-height: 1.4;
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+
+.about-quote-attribution {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.about-quote-av {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold-2);
+}
+
+.about-quote-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ivory);
+}
+
+.about-quote-role {
+  font-size: 12px;
+  color: rgba(247,243,235,0.5);
+  font-family: var(--font-mono);
+  margin-top: 2px;
+}
+
+/* Philosophy section */
+.philosophy-section {
+  padding: 120px 0;
+  background: var(--ivory-2);
+}
+
+.philosophy-intro {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 80px;
+}
+
+.philosophy-intro p {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--ink);
+  line-height: 1.65;
+  font-style: italic;
+}
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: rgba(26,61,43,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.principle {
+  background: var(--white);
+  padding: 48px 40px;
+  position: relative;
+}
+
+.principle-num {
+  font-family: var(--font-display);
+  font-size: 100px;
+  font-weight: 700;
+  color: rgba(26,61,43,0.04);
+  line-height: 1;
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  pointer-events: none;
+}
+
+.principle-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.principle-body {
+  font-size: 16px;
+  color: var(--stone);
+  line-height: 1.75;
+}
+
+/* Testimonials */
+.testimonials-section {
+  padding: 120px 0;
+  background: var(--ivory);
+}
+
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 36px 32px;
+  border: 1px solid rgba(26,61,43,0.07);
+  position: relative;
+  transition: all 0.3s;
+}
+.testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(26,61,43,0.08); }
+
+.testimonial-quote-mark {
+  font-family: var(--font-display);
+  font-size: 80px;
+  color: rgba(26,61,43,0.06);
+  line-height: 0.6;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  pointer-events: none;
+}
+
+.testimonial-stars {
+  color: var(--gold);
+  font-size: 14px;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.testimonial-text {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(26,61,43,0.07);
+}
+
+.testimonial-av {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--ivory-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.testimonial-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.testimonial-detail {
+  font-size: 12px;
+  color: var(--pebble);
+  font-family: var(--font-mono);
+  margin-top: 2px;
+}
+
+/* ── CTA Section (shared) ──────────────────────── */
+.final-cta {
+  background: linear-gradient(135deg, var(--forest) 0%, #0d2218 100%);
+  padding: 140px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(64,145,108,0.25) 0%, transparent 70%);
+}
+
+.final-cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 600;
+  color: var(--ivory);
+  letter-spacing: -2px;
+  line-height: 1.05;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.final-cta h2 em { color: var(--gold-2); font-style: italic; }
+
+.final-cta p {
+  font-size: 18px;
+  color: rgba(247,243,235,0.65);
+  max-width: 480px;
+  margin: 0 auto 48px;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+.final-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.final-cta-note {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(247,243,235,0.35);
+  margin-top: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Footer ──────────────────────────────────── */
+footer {
+  background: var(--charcoal);
+  padding: 72px 0 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 32px;
+}
+
+.footer-brand-name {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ivory);
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.footer-brand-desc {
+  font-size: 14px;
+  color: rgba(247,243,235,0.45);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  max-width: 280px;
+}
+
+.footer-col-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(247,243,235,0.3);
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: rgba(247,243,235,0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.footer-links a:hover { color: var(--ivory); }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: rgba(247,243,235,0.25);
+  font-family: var(--font-mono);
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-bottom-links a {
+  font-size: 13px;
+  color: rgba(247,243,235,0.25);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.footer-bottom-links a:hover { color: rgba(247,243,235,0.6); }
+
+/* ── Mobile ──────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .container, .container-narrow { padding: 0 24px; }
+  .hero-container { grid-template-columns: 1fr; min-height: auto; padding: 80px 24px 60px; gap: 48px; }
+  .hero-visual { display: none; }
+  .problem-grid, .intro-pillars, .schools-hero-grid, .about-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .rules-grid, .benefits-grid, .pricing-cards, .testimonials-grid { grid-template-columns: 1fr; }
+  .faq-grid, .principles-grid { grid-template-columns: 1fr; }
+  .pricing-cards { gap: 16px; }
+  .plan-card.featured { transform: none; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .step { grid-template-columns: 48px 1fr; gap: 24px; }
+  .step .step-visual { display: none; }
+  .feature-row { grid-template-columns: 1fr; }
+  .feature-row.reverse .feature-visual-col { order: 0; }
+  .pilot-steps { grid-template-columns: 1fr; }
+  .schools-stats { grid-template-columns: 1fr; }
+  .schools-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .trial-banner { grid-template-columns: 1fr; text-align: center; padding: 40px 28px; }
+  .assessment-grid { grid-template-columns: 1fr 1fr; }
+  section { padding: 80px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- NAVIGATION -->
+<!-- ═══════════════════════════════════════════ -->
+<nav id="main-nav">
+  <div class="nav-logo" onclick="showPage('home')">
+    mirra<span class="nav-logo-dot"></span>
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('how')" id="nav-how">How it works</a></li>
+    <li><a onclick="showPage('features')" id="nav-features">Features</a></li>
+    <li><a onclick="showPage('pricing')" id="nav-pricing">Pricing</a></li>
+    <li><a onclick="showPage('schools')" id="nav-schools">For Schools</a></li>
+    <li><a onclick="showPage('about')" id="nav-about">Philosophy</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a class="btn-nav-secondary" onclick="showPage('pricing')">Sign in</a>
+    <a class="btn-nav-primary" onclick="showPage('pricing')">Start free trial →</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE: HOME -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-circle-1"></div>
+      <div class="hero-circle-2"></div>
+      <div class="hero-line"></div>
+      <div class="hero-line"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-container">
+        <div class="hero-text">
+          <div class="hero-eyebrow animate in d1">
+            <span class="hero-eyebrow-dot"></span>
+            For IB DP · IB MYP · IGCSE · A-Levels
+          </div>
+          <h1 class="hero-title animate in d2">
+            Don't memorise.
+            <em>Learn to think.</em>
+          </h1>
+          <p class="hero-body animate in d3">
+            Mirra is an AI Socratic tutor that never explains, never writes your essays, and never gives you the answer. It asks the one question that makes you figure it out yourself.
+          </p>
+          <div class="hero-actions animate in d4">
+            <a class="btn-primary" onclick="showPage('pricing')">
+              Start free — 20 questions <span class="arrow">→</span>
+            </a>
+            <a class="btn-secondary" onclick="showPage('how')">
+              See how it works
+            </a>
+          </div>
+          <div class="hero-proof animate in d5">
+            <div class="hero-proof-avatars">
+              <div class="hero-proof-avatar">🧑🏽</div>
+              <div class="hero-proof-avatar">👩🏻</div>
+              <div class="hero-proof-avatar">👦🏾</div>
+              <div class="hero-proof-avatar">👩🏼</div>
+            </div>
+            <span class="hero-proof-text">
+              <strong>2,400+ IB students</strong> already thinking with Mirra
+            </span>
+          </div>
+        </div>
+
+        <!-- Chat Demo -->
+        <div class="hero-visual animate in d3">
+          <div style="position:relative;">
+            <div class="chat-demo">
+              <div class="chat-header">
+                <div class="chat-header-dot"></div>
+                <div class="chat-header-dot"></div>
+                <div class="chat-header-title">Mirra</div>
+                <div class="chat-header-status">
+                  <div class="chat-status-dot"></div>
+                  thinking with you
+                </div>
+              </div>
+              <div class="chat-body">
+                <span class="chat-topic-tag">TOK Essay · Knowledge & Technology</span>
+
+                <div class="chat-bubble student">
+                  <div class="bubble-avatar student-av">👩🏻</div>
+                  <div class="bubble-text student">I think technology has made us better thinkers because we have access to more information.</div>
+                </div>
+
+                <div class="chat-bubble">
+                  <div class="bubble-avatar mirra-av">M</div>
+                  <div class="bubble-text mirra">What are you assuming about the relationship between having information and being able to think?</div>
+                </div>
+
+                <div class="chat-bubble student">
+                  <div class="bubble-avatar student-av">👩🏻</div>
+                  <div class="bubble-text student">Oh... I'm assuming that access to information automatically improves thinking. But that's not necessarily true, is it?</div>
+                </div>
+
+                <div class="chat-typing">
+                  <div class="bubble-avatar mirra-av">M</div>
+                  <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="chat-footer">
+                <div class="chat-input-mock">What's your thinking on this?</div>
+                <div class="chat-send-btn">↑</div>
+              </div>
+            </div>
+
+            <div class="hero-float-label hero-float-1">
+              <span class="float-icon">💡</span>
+              Breakthrough detected
+            </div>
+
+            <div class="hero-float-label hero-float-2">
+              <span class="float-icon">📊</span>
+              3 sessions this week
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS / SCHOOLS -->
+  <div class="logos-section">
+    <div class="container">
+      <p class="logos-label">Used by students from</p>
+      <div class="logos-grid">
+        <span class="school-logo">Dhirubhai Ambani International</span>
+        <span class="school-logo">The Doon School</span>
+        <span class="school-logo">Oberoi International</span>
+        <span class="school-logo">Jamnabai Narsee</span>
+        <span class="school-logo">Aditya Birla World Academy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="problem-section">
+    <div class="problem-bg-text">Think</div>
+    <div class="container">
+      <div class="problem-grid">
+        <div>
+          <span class="problem-label">The problem</span>
+          <h2 class="problem-headline">IB is designed to fail students who <em>don't think.</em></h2>
+          <p class="problem-body">The IB is not a content test. You cannot cram your way to a 7. The examiners aren't looking for the right answer — they're looking for a mind that questions its own assumptions, engages with counterarguments, and builds knowledge claims that hold up under scrutiny.</p>
+          <p class="problem-body">Most students never learn how to do this. Not because they aren't smart. Because no one ever showed them how.</p>
+          <div class="problem-stats">
+            <div class="problem-stat">
+              <div class="problem-stat-num">23%</div>
+              <div class="problem-stat-label">of IB DP students achieve a 7 on TOK Essay globally</div>
+            </div>
+            <div class="problem-stat">
+              <div class="problem-stat-num">68%</div>
+              <div class="problem-stat-label">say they don't know how to structure a philosophical argument</div>
+            </div>
+            <div class="problem-stat">
+              <div class="problem-stat-num">4 hrs</div>
+              <div class="problem-stat-label">average time students spend on essays the night before deadline</div>
+            </div>
+            <div class="problem-stat">
+              <div class="problem-stat-num">1 in 3</div>
+              <div class="problem-stat-label">IB students say they never had a real intellectual discussion with a teacher</div>
+            </div>
+          </div>
+        </div>
+        <div class="problem-quotes">
+          <div class="problem-quote-card">
+            <div class="quote-mark">"</div>
+            <p class="problem-quote-text">I spent weeks writing my TOK essay and got a C. My teacher said my argument was circular. I had no idea what that meant.</p>
+            <div class="problem-quote-source">
+              <div class="quote-avatar">📚</div>
+              <div>
+                <div class="quote-name">Priya S.</div>
+                <div class="quote-detail">IB DP Year 2 · Mumbai</div>
+              </div>
+            </div>
+          </div>
+          <div class="problem-quote-card">
+            <div class="quote-mark">"</div>
+            <p class="problem-quote-text">My tutor just explains the concepts. But the IB examiner doesn't want explanations — they want original thinking. I didn't know the difference.</p>
+            <div class="problem-quote-source">
+              <div class="quote-avatar">🎓</div>
+              <div>
+                <div class="quote-name">Arjun K.</div>
+                <div class="quote-detail">IGCSE · Delhi</div>
+              </div>
+            </div>
+          </div>
+          <div class="problem-quote-card">
+            <div class="quote-mark">"</div>
+            <p class="problem-quote-text">Other AI tools write my essays for me. That makes me dependent. I need something that actually builds my thinking.</p>
+            <div class="problem-quote-source">
+              <div class="quote-avatar">💻</div>
+              <div>
+                <div class="quote-name">Nadia R.</div>
+                <div class="quote-detail">IB DP Year 1 · Bangalore</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO TO MIRRA -->
+  <section class="intro-section">
+    <div class="container-narrow">
+      <span class="section-tag" style="text-align:center;display:block;">The Mirra approach</span>
+      <p class="intro-big-text">
+        Mirra is built on one radical idea: <em>you already have the answer inside you.</em>
+        You just haven't been asked the <strong>right question</strong> yet.
+      </p>
+      <div class="intro-rule"></div>
+      <p style="font-size:17px;color:var(--stone);line-height:1.75;text-align:center;">
+        Every response from Mirra is a question. Not a test. Not a lecture. A single, precise question aimed at the one assumption you haven't examined — the one that, when you examine it, changes everything.
+      </p>
+    </div>
+    <div class="container">
+      <div class="intro-pillars">
+        <div class="pillar animate in d1">
+          <span class="pillar-icon">🔬</span>
+          <div class="pillar-num">01</div>
+          <div class="pillar-title">Socratic Method</div>
+          <div class="pillar-body">Mirra uses the oldest teaching method in the world — the technique Socrates used to help students discover truth through questioning. Never answers. Always asks.</div>
+        </div>
+        <div class="pillar animate in d2">
+          <span class="pillar-icon">🧠</span>
+          <div class="pillar-num">02</div>
+          <div class="pillar-title">Mistake DNA</div>
+          <div class="pillar-body">Mirra tracks <em>how</em> you think, not what you know. After every session, it identifies your recurring reasoning patterns and builds a profile of your intellectual blind spots.</div>
+        </div>
+        <div class="pillar animate in d3">
+          <span class="pillar-icon">🎯</span>
+          <div class="pillar-num">03</div>
+          <div class="pillar-title">IB-Calibrated</div>
+          <div class="pillar-body">Every question type, every depth setting, every subject calibration is designed specifically for IB DP, IB MYP, IGCSE, and A-Level assessments. Not generic tutoring.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <div class="final-cta-bg"></div>
+    <div class="container-narrow">
+      <h2>Your first breakthrough <em>is free.</em></h2>
+      <p>20 questions. No credit card. No commitment. Just you and Mirra, thinking together.</p>
+      <div class="final-cta-actions">
+        <a class="btn-gold" onclick="showPage('pricing')">Start free trial →</a>
+        <a class="btn-secondary" style="color:rgba(247,243,235,0.7);border-color:rgba(247,243,235,0.2);" onclick="showPage('schools')">I represent a school</a>
+      </div>
+      <p class="final-cta-note">No credit card required · Cancel anytime · Used in 40+ IB schools</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">mirra</div>
+          <p class="footer-brand-desc">An AI Socratic tutor for IB and IGCSE students. We help you think — not just learn.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Product</div>
+          <ul class="footer-links">
+            <li><a onclick="showPage('how')">How it works</a></li>
+            <li><a onclick="showPage('features')">Features</a></li>
+            <li><a onclick="showPage('pricing')">Pricing</a></li>
+            <li><a onclick="showPage('schools')">For Schools</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Students</div>
+          <ul class="footer-links">
+            <li><a>IB DP</a></li>
+            <li><a>IB MYP</a></li>
+            <li><a>IGCSE</a></li>
+            <li><a>A-Levels</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a onclick="showPage('about')">Philosophy</a></li>
+            <li><a>Privacy Policy</a></li>
+            <li><a>Terms of Use</a></li>
+            <li><a>Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Mirra. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a>Privacy</a>
+          <a>Terms</a>
+          <a>Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE: HOW IT WORKS -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page" id="page-how">
+  <div class="how-hero" style="padding-top:140px;">
+    <div class="how-hero-bg"></div>
+    <div class="container-narrow">
+      <span class="section-tag" style="color:var(--sage);">How Mirra works</span>
+      <h1>Five steps from <em>blank page</em><br>to genuine insight</h1>
+      <p>No lectures. No model answers. No shortcuts. Just a rigorous, warm conversation that moves your thinking forward.</p>
+    </div>
+  </div>
+
+  <section class="steps-section">
+    <div class="container">
+      <div class="steps-grid">
+
+        <!-- Step 1 -->
+        <div class="step animate in">
+          <div class="step-num-col">
+            <div class="step-num">1</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-tag">Starting the session</div>
+            <h3 class="step-title">You bring a topic. Any topic.</h3>
+            <p class="step-body">Start by typing what you're working on — a TOK claim, an EE research question, a concept from Biology HL, a History essay argument. Even "I have no idea where to begin" is a valid starting point.</p>
+            <div class="step-detail">
+              <div class="step-detail-item">Mirra reads your programme, subjects, and active assessment before the session begins</div>
+              <div class="step-detail-item">Your reasoning history from past sessions shapes the first question</div>
+              <div class="step-detail-item">You can type, speak, or upload an image of your notes</div>
+            </div>
+          </div>
+          <div class="step-visual">
+            <div class="conv-example">
+              <div class="conv-line right">
+                <div class="conv-av s">👩</div>
+                <div class="conv-text s">I need help with my TOK essay on whether scientific knowledge is more reliable than artistic knowledge</div>
+              </div>
+              <div class="conv-label">Mirra reads your IB DP profile + TOK essay context</div>
+              <div class="conv-line">
+                <div class="conv-av m">M</div>
+                <div class="conv-text m">What do you mean by "reliable" in this context?</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step animate in">
+          <div class="step-num-col">
+            <div class="step-num">2</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-tag">The Socratic dialogue</div>
+            <h3 class="step-title">One question. Every time. No exceptions.</h3>
+            <p class="step-body">Mirra responds with exactly one question per message. Never two. Never an explanation. Never a model answer. The question is always aimed at the assumption you haven't examined yet — the weak point in your thinking that you can't see because you're standing too close to it.</p>
+            <div class="step-detail">
+              <div class="step-detail-item">Seven question types rotate to build different thinking skills</div>
+              <div class="step-detail-item">Depth calibrated to your programme: quick arc for IGCSE, deep arc for TOK/EE</div>
+              <div class="step-detail-item">Mirra detects frustration or boredom signals and adapts immediately</div>
+            </div>
+          </div>
+          <div class="step-visual">
+            <div class="qtype-grid">
+              <div class="qtype-item">
+                <div class="qtype-letter">A</div>
+                <div class="qtype-name">Assumption</div>
+                <div class="qtype-example">"What are you assuming about X?"</div>
+              </div>
+              <div class="qtype-item">
+                <div class="qtype-letter">B</div>
+                <div class="qtype-name">Consequence</div>
+                <div class="qtype-example">"If that's true, what would follow?"</div>
+              </div>
+              <div class="qtype-item">
+                <div class="qtype-letter">C</div>
+                <div class="qtype-name">Counterexample</div>
+                <div class="qtype-example">"Can you think of a case where that wouldn't hold?"</div>
+              </div>
+              <div class="qtype-item">
+                <div class="qtype-letter">D</div>
+                <div class="qtype-name">Definition</div>
+                <div class="qtype-example">"What exactly do you mean by X?"</div>
+              </div>
+              <div class="qtype-item">
+                <div class="qtype-letter">E</div>
+                <div class="qtype-name">Evidence</div>
+                <div class="qtype-example">"What would you point to as evidence?"</div>
+              </div>
+              <div class="qtype-item">
+                <div class="qtype-letter">F</div>
+                <div class="qtype-name">Reversal</div>
+                <div class="qtype-example">"What would someone who disagrees say?"</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step animate in">
+          <div class="step-num-col">
+            <div class="step-num">3</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-tag">Detecting reasoning patterns</div>
+            <h3 class="step-title">Mirra builds your Mistake DNA.</h3>
+            <p class="step-body">Every 5 exchanges, Mirra silently analyses the conversation and extracts a reasoning pattern — not a factual error, but a systematic habit in <em>how</em> you think. These patterns accumulate into a profile that makes every subsequent session more targeted.</p>
+            <div class="step-detail">
+              <div class="step-detail-item">9 distinct reasoning gap categories tracked across sessions</div>
+              <div class="step-detail-item">Patterns shown on your dashboard as dismissable tags</div>
+              <div class="step-detail-item">Injected back into future sessions so Mirra approaches them from a new angle</div>
+            </div>
+          </div>
+          <div class="step-visual">
+            <div class="gap-detect-visual">
+              <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--pebble);margin-bottom:14px;">Your thinking patterns</div>
+              <div class="gap-tag-item">
+                <span class="gap-tag-icon">🔗</span>
+                <div class="gap-tag-text"><strong>Causal reasoning</strong><br>Treats correlation as causation in data arguments</div>
+                <div class="gap-tag-count">4× detected</div>
+              </div>
+              <div class="gap-tag-item">
+                <span class="gap-tag-icon">🌍</span>
+                <div class="gap-tag-text"><strong>Universalisation</strong><br>Assumes cultural context applies globally</div>
+                <div class="gap-tag-count">2× detected</div>
+              </div>
+              <div class="gap-tag-item">
+                <span class="gap-tag-icon">🎯</span>
+                <div class="gap-tag-text"><strong>Evidence specificity</strong><br>Uses vague examples when precise ones are needed</div>
+                <div class="gap-tag-count">3× detected</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step animate in">
+          <div class="step-num-col">
+            <div class="step-num">4</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-tag">The breakthrough moment</div>
+            <h3 class="step-title">The moment everything clicks.</h3>
+            <p class="step-body">Breakthroughs are real. Mirra detects them — the moment you say "Oh wait, I've been assuming..." or "So actually both things could be true at different scales?" — and records them. Students who experience a breakthrough in session one return at twice the rate. Because they felt what real thinking feels like.</p>
+            <div class="step-detail">
+              <div class="step-detail-item">Breakthrough moments recorded and shown in your weekly report</div>
+              <div class="step-detail-item">Mirra acknowledges the insight and extends it with one more question</div>
+              <div class="step-detail-item">Breakthrough rate tracked by subject and assessment type</div>
+            </div>
+          </div>
+          <div class="step-visual">
+            <div class="conv-example">
+              <div class="conv-line right">
+                <div class="conv-av s">👩</div>
+                <div class="conv-text s">Oh wait... I've been assuming that "reliable" means "provable." But maybe reliability means something different in art — like emotional truth.</div>
+              </div>
+              <div class="conv-line">
+                <div class="conv-av m">M</div>
+                <div class="conv-text m">That's a real distinction. If artistic knowledge has its own standard of reliability, what would it mean for a knowledge claim in art to be "unreliable"?</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step animate in">
+          <div class="step-num-col">
+            <div class="step-num">5</div>
+          </div>
+          <div class="step-content">
+            <div class="step-tag">After the session</div>
+            <h3 class="step-title">Your weekly thinking report.</h3>
+            <p class="step-body">Every Sunday, Mirra generates a personalised 200-word report on your intellectual week. Not grades. Not scores. A clear-eyed account of what you explored, what thinking patterns are emerging, and one question to sit with before the week ahead. It reads like a letter from a mentor who has been paying close attention.</p>
+            <div class="step-detail">
+              <div class="step-detail-item">Written in second person, specific to your actual sessions</div>
+              <div class="step-detail-item">Never generic — Mirra references your real topics and your actual reasoning</div>
+              <div class="step-detail-item">Morning thinking seeds sent daily to keep momentum between sessions</div>
+            </div>
+          </div>
+          <div class="step-visual">
+            <div style="background:var(--ivory);border-radius:14px;padding:20px;border:1px solid rgba(26,61,43,0.08);">
+              <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--pebble);margin-bottom:16px;">Weekly Report · Week of 12 Jan</div>
+              <p style="font-family:var(--font-display);font-size:15px;font-style:italic;color:var(--ink);line-height:1.65;">This week you explored the tension between scientific and artistic knowledge across four sessions. A pattern is emerging: when you encounter a counterexample, you acknowledge it but rarely engage with what it <em>implies</em> for your main argument.</p>
+              <p style="font-family:var(--font-display);font-size:15px;font-style:italic;color:var(--forest);margin-top:12px;line-height:1.65;">A question to sit with: If engaging a strong counterexample weakened your argument, what would that tell you?</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Rules -->
+  <section class="rules-section">
+    <div class="container">
+      <div class="rules-header">
+        <span class="section-tag">Mirra's non-negotiable rules</span>
+        <h2 class="section-headline">What Mirra will <em>never</em> do</h2>
+        <p class="section-subhead" style="margin:16px auto 0;text-align:center;">These aren't bugs. They're the whole point.</p>
+      </div>
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-num">1</div>
+          <div class="rule-emoji">✍️</div>
+          <div class="rule-title">Never write your essay</div>
+          <div class="rule-body">Not one sentence. Not a thesis statement. Not an "example structure." If Mirra wrote it, it's not yours — and it won't pass an IB examiner who has read 10,000 essays and knows exactly what authentic student thinking looks like.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-num">2</div>
+          <div class="rule-emoji">👍</div>
+          <div class="rule-title">Never validate your argument</div>
+          <div class="rule-body">"Is this argument good?" is the wrong question. Mirra will never say "yes, that's correct" or "no, that's wrong." Instead it will ask: "What would someone who disagrees say?" The point is for you to evaluate your own argument.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-num">3</div>
+          <div class="rule-emoji">🔄</div>
+          <div class="rule-title">Never ask the same question twice</div>
+          <div class="rule-body">Mirra rotates through seven question types and tracks which it has used in your session. If you're stuck, Mirra changes angle — not angle of the same question, a genuinely different dimension of your thinking.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-num">4</div>
+          <div class="rule-emoji">😤</div>
+          <div class="rule-title">Never ignore emotional signals</div>
+          <div class="rule-body">"I'm bored." "Just tell me." "This is pointless." Mirra detects these signals and stops the Socratic arc immediately. It consolidates what you figured out, closes warmly, and offers to move on. Forcing thinking on a frustrated student produces nothing.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-num">5</div>
+          <div class="rule-emoji">📝</div>
+          <div class="rule-title">Never ask two questions at once</div>
+          <div class="rule-body">One question. Every response. Without exception. Two questions let you pick the easier one and avoid the hard one. One question forces you to go somewhere you might have dodged.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-num">6</div>
+          <div class="rule-emoji">🏆</div>
+          <div class="rule-title">Never lower the standard</div>
+          <div class="rule-body">Mirra treats you as a thinker, not a student to be managed. The questions will be hard. The standard will be IB standard. But the warmth and patience are infinite — Mirra never makes you feel stupid for not knowing something yet.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="final-cta">
+    <div class="final-cta-bg"></div>
+    <div class="container-narrow">
+      <h2>Ready to think <em>differently?</em></h2>
+      <p>Your first 20 questions are free. No card required.</p>
+      <div class="final-cta-actions">
+        <a class="btn-gold" onclick="showPage('pricing')">Start your free trial →</a>
+      </div>
+      <p class="final-cta-note">No credit card required · Works on any device · Cancel anytime</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand-name">mirra</div><p class="footer-brand-desc">Socratic AI for IB and IGCSE students.</p></div>
+        <div><div class="footer-col-title">Product</div><ul class="footer-links"><li><a onclick="showPage('how')">How it works</a></li><li><a onclick="showPage('features')">Features</a></li><li><a onclick="showPage('pricing')">Pricing</a></li></ul></div>
+        <div><div class="footer-col-title">Students</div><ul class="footer-links"><li><a>IB DP</a></li><li><a>IGCSE</a></li><li><a>A-Levels</a></li></ul></div>
+        <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a onclick="showPage('about')">Philosophy</a></li><li><a>Privacy</a></li><li><a>Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span class="footer-copy">© 2025 Mirra.</span></div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE: FEATURES -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page" id="page-features">
+  <div class="features-hero" style="padding-top:140px;">
+    <div class="container-narrow" style="text-align:center;">
+      <span class="section-tag">Everything Mirra does</span>
+      <h1 class="section-headline">Built for the exam.<br><em>Built for the thinker.</em></h1>
+      <p class="section-subhead" style="margin:20px auto 0;text-align:center;max-width:520px;">Every feature exists to make you a better IB thinker — not to do your work for you.</p>
+    </div>
+  </div>
+
+  <section class="features-grid-section">
+    <div class="container">
+
+      <!-- Feature 1: Socratic Engine -->
+      <div class="feature-row animate in">
+        <div class="feature-text-col">
+          <div class="feature-badge">★ Core feature</div>
+          <h2 class="feature-title">The Socratic <em>Engine</em></h2>
+          <p class="feature-body">Mirra's intelligence isn't about knowing more than you. It's about asking better questions than anyone else. Every response is crafted by a system trained specifically to teach through questioning — not explanation.</p>
+          <ul class="feature-list">
+            <li>Seven distinct question types targeting different dimensions of thinking</li>
+            <li>Five assessment lenses: TOK, Extended Essay, Internal Assessment, IGCSE, Exam Prep</li>
+            <li>Emotional signal detection — boredom, frustration, stuck, breakthrough</li>
+            <li>Session depth calibrated to your programme and question type</li>
+            <li>Progress state tracking: DEEPENING / SURFACE / STUCK / BREAKTHROUGH / CIRCULAR</li>
+          </ul>
+        </div>
+        <div class="feature-visual-col">
+          <div class="feature-card">
+            <div class="feature-card-header">
+              <span class="fch-title">Active session · Biology HL · IA</span>
+              <span class="fch-badge">● Live</span>
+            </div>
+            <div class="feature-card-body">
+              <div class="conv-example">
+                <div class="conv-line right">
+                  <div class="conv-av s">🧑</div>
+                  <div class="conv-text s">My hypothesis was that exercise increases reaction time. My data showed no significant change.</div>
+                </div>
+                <div class="conv-line">
+                  <div class="conv-av m">M</div>
+                  <div class="conv-text m">Your data didn't support your hypothesis. What does that tell you about the hypothesis itself?</div>
+                </div>
+                <div class="conv-line right">
+                  <div class="conv-av s">🧑</div>
+                  <div class="conv-text s">Maybe my hypothesis was too simple? Or my method couldn't measure what I was actually testing?</div>
+                </div>
+                <div class="conv-line">
+                  <div class="conv-av m">M</div>
+                  <div class="conv-text m">Those are two different problems. Which one would you rather your IA examiner thought you understood?</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 2: Personalization -->
+      <div class="feature-row reverse animate in">
+        <div class="feature-text-col">
+          <div class="feature-badge">Personalization engine</div>
+          <h2 class="feature-title">Smarter with <em>every session.</em></h2>
+          <p class="feature-body">Mirra builds a model of how you think. After your first 5 sessions, it knows which question types produce breakthroughs for you, which reasoning patterns you fall into, and what depth of questioning you're ready for.</p>
+          <ul class="feature-list">
+            <li>Student profile built from session count, breakthrough rate, gap frequency</li>
+            <li>Question type preference tracked: which types produce your best thinking</li>
+            <li>Session depth scales with experience: gentle at first, rigorous by session 20</li>
+            <li>Subject-specific tone calibration: empirical for Sciences, interpretive for Literature</li>
+          </ul>
+        </div>
+        <div class="feature-visual-col">
+          <div class="feature-card">
+            <div class="feature-card-header">
+              <span class="fch-title">Your thinking profile · 18 sessions</span>
+              <span class="fch-badge">Updated live</span>
+            </div>
+            <div class="feature-card-body">
+              <div class="persona-bar">
+                <div class="persona-bar-label"><span>Type A — Assumption</span><span>High impact</span></div>
+                <div class="persona-bar-track"><div class="persona-bar-fill" style="width:88%"></div></div>
+              </div>
+              <div class="persona-bar">
+                <div class="persona-bar-label"><span>Type E — Evidence</span><span>High impact</span></div>
+                <div class="persona-bar-track"><div class="persona-bar-fill" style="width:76%"></div></div>
+              </div>
+              <div class="persona-bar">
+                <div class="persona-bar-label"><span>Type G — Scenario</span><span>Medium impact</span></div>
+                <div class="persona-bar-track"><div class="persona-bar-fill" style="width:54%;background:linear-gradient(90deg,var(--gold),var(--gold-2))"></div></div>
+              </div>
+              <div class="persona-bar">
+                <div class="persona-bar-label"><span>Type C — Counterexample</span><span>Growth area</span></div>
+                <div class="persona-bar-track"><div class="persona-bar-fill" style="width:32%;background:linear-gradient(90deg,var(--stone),var(--pebble))"></div></div>
+              </div>
+              <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(26,61,43,0.07);font-size:12px;color:var(--pebble);">Depth calibration: <strong style="color:var(--forest)">RIGOROUS</strong> — treating as a serious thinker</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3: Mistake DNA -->
+      <div class="feature-row animate in">
+        <div class="feature-text-col">
+          <div class="feature-badge">Mistake DNA</div>
+          <h2 class="feature-title">Know your <em>blind spots.</em></h2>
+          <p class="feature-body">Most students make the same reasoning errors session after session without ever noticing. Mirra makes your invisible patterns visible — and then specifically targets them in future sessions so you can't avoid working on them.</p>
+          <ul class="feature-list">
+            <li>9 reasoning gap categories tracked across all sessions</li>
+            <li>Occurrence count shows which patterns are most persistent</li>
+            <li>Gaps dismissed when you've actively worked through them</li>
+            <li>Gap history visible in your dashboard and weekly report</li>
+          </ul>
+        </div>
+        <div class="feature-visual-col">
+          <div class="feature-card">
+            <div class="feature-card-header">
+              <span class="fch-title">Reasoning gap analysis</span>
+              <span class="fch-badge">3 active patterns</span>
+            </div>
+            <div class="feature-card-body">
+              <div class="dna-item">
+                <span class="dna-icon">🔗</span>
+                <div class="dna-content">
+                  <div class="dna-title">Causal reasoning</div>
+                  <div class="dna-sub">Treats correlation as causation in economic arguments</div>
+                </div>
+                <div class="dna-freq high">4× seen</div>
+              </div>
+              <div class="dna-item">
+                <span class="dna-icon">🌏</span>
+                <div class="dna-content">
+                  <div class="dna-title">Cultural universalisation</div>
+                  <div class="dna-sub">Assumes Indian context applies universally to claims</div>
+                </div>
+                <div class="dna-freq high">3× seen</div>
+              </div>
+              <div class="dna-item">
+                <span class="dna-icon">💬</span>
+                <div class="dna-content">
+                  <div class="dna-title">Counterclaim engagement</div>
+                  <div class="dna-sub">States counterarguments without engaging their implications</div>
+                </div>
+                <div class="dna-freq">2× seen</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 4: IB Assessment Coverage -->
+      <div class="feature-row reverse animate in">
+        <div class="feature-text-col">
+          <div class="feature-badge">IB & IGCSE calibrated</div>
+          <h2 class="feature-title">Every assessment. <em>Every subject.</em></h2>
+          <p class="feature-body">Mirra isn't generic. The questions, depth, and focus change completely depending on whether you're working on a TOK essay, Extended Essay, Internal Assessment, or exam preparation. Each mode has specific Socratic protocols.</p>
+          <ul class="feature-list">
+            <li>TOK: pushes opinion → knowledge claim, asks about AOK and WOK</li>
+            <li>Extended Essay: targets RQ precision, argument-evidence link, limitations</li>
+            <li>Internal Assessment: pushes on methodology, data-theory connection</li>
+            <li>IGCSE / Exam Prep: short arc (3–4 exchanges), then bridge to application</li>
+            <li>Subject calibration: Sciences, History, Literature, Maths each have distinct lenses</li>
+          </ul>
+        </div>
+        <div class="feature-visual-col">
+          <div class="feature-card">
+            <div class="feature-card-header">
+              <span class="fch-title">Assessment mode selector</span>
+            </div>
+            <div class="feature-card-body">
+              <div class="assessment-grid">
+                <div class="assessment-card active">
+                  <div class="assessment-icon">🔭</div>
+                  <div class="assessment-name">TOK Essay</div>
+                  <div class="assessment-desc">Knowledge claims, AOK, WOK, real-world situations</div>
+                </div>
+                <div class="assessment-card">
+                  <div class="assessment-icon">📜</div>
+                  <div class="assessment-name">Extended Essay</div>
+                  <div class="assessment-desc">RQ precision, argument-evidence link, limitations</div>
+                </div>
+                <div class="assessment-card">
+                  <div class="assessment-icon">🧪</div>
+                  <div class="assessment-name">Internal Assessment</div>
+                  <div class="assessment-desc">Methodology, data-theory connection, evaluation</div>
+                </div>
+                <div class="assessment-card">
+                  <div class="assessment-icon">✏️</div>
+                  <div class="assessment-name">Exam Prep</div>
+                  <div class="assessment-desc">Core ideas, application, efficient arc in 3–4 exchanges</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="final-cta">
+    <div class="final-cta-bg"></div>
+    <div class="container-narrow">
+      <h2>Start thinking <em>at IB level.</em></h2>
+      <p>20 free questions. No card. No setup. Just open Mirra and begin.</p>
+      <div class="final-cta-actions">
+        <a class="btn-gold" onclick="showPage('pricing')">Start free trial →</a>
+        <a class="btn-secondary" style="color:rgba(247,243,235,0.7);border-color:rgba(247,243,235,0.2);" onclick="showPage('pricing')">See pricing</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand-name">mirra</div><p class="footer-brand-desc">Socratic AI for IB and IGCSE students.</p></div>
+        <div><div class="footer-col-title">Product</div><ul class="footer-links"><li><a onclick="showPage('how')">How it works</a></li><li><a onclick="showPage('pricing')">Pricing</a></li></ul></div>
+        <div><div class="footer-col-title">Students</div><ul class="footer-links"><li><a>IB DP</a></li><li><a>IGCSE</a></li></ul></div>
+        <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a onclick="showPage('about')">Philosophy</a></li><li><a>Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span class="footer-copy">© 2025 Mirra.</span></div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE: PRICING -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page" id="page-pricing">
+  <div class="pricing-hero" style="padding-top:140px;">
+    <div class="container-narrow" style="text-align:center;">
+      <span class="section-tag">Simple, honest pricing</span>
+      <h1 class="section-headline">Invest in thinking.<br><em>Not in answers.</em></h1>
+      <p class="section-subhead" style="text-align:center;margin:20px auto 0;">Questions are Mirra's currency. Use them for real thinking. Every plan includes full Socratic sessions, gap detection, and your weekly report.</p>
+      <div class="pricing-toggle">
+        <div class="toggle-opt active" id="toggle-monthly" onclick="setToggle('monthly')">Monthly</div>
+        <div class="toggle-opt" id="toggle-annual" onclick="setToggle('annual')">Annual <span class="savings-badge">Save 20%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="pricing-section">
+    <div class="container">
+
+      <!-- Trial Banner -->
+      <div class="trial-banner animate in">
+        <div class="trial-banner-text">
+          <h3>Start with 20 free questions — no card required.</h3>
+          <p>Get 7 days and 20 Socratic questions to experience what real IB thinking support feels like. No credit card. No commitment. Cancel whenever.</p>
+          <div class="trial-pills">
+            <span class="trial-pill">✦ 20 questions included</span>
+            <span class="trial-pill">✦ 7-day access</span>
+            <span class="trial-pill">✦ No credit card</span>
+            <span class="trial-pill">✦ Full Socratic engine</span>
+            <span class="trial-pill">✦ Gap detection</span>
+          </div>
+        </div>
+        <a class="btn-gold" style="white-space:nowrap;flex-shrink:0;" href="#">Start free trial →</a>
+      </div>
+
+      <!-- Pricing Cards -->
+      <div class="pricing-cards animate in d2">
+        <!-- Basic -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="plan-name">Basic</div>
+            <div class="plan-tagline">For students getting started with Socratic thinking</div>
+            <div class="plan-price">
+              <span class="plan-price-currency">₹</span>
+              <span class="plan-price-amount" id="basic-price">500</span>
+              <span class="plan-price-period">/month</span>
+            </div>
+            <div class="plan-questions">✦ 150 questions per month</div>
+          </div>
+          <div class="plan-body">
+            <ul class="plan-features">
+              <li><span class="check">✓</span> Full Socratic engine</li>
+              <li><span class="check">✓</span> All 7 question types</li>
+              <li><span class="check">✓</span> TOK + EE + IA modes</li>
+              <li><span class="check">✓</span> Gap detection (Mistake DNA)</li>
+              <li><span class="check">✓</span> Dashboard + session history</li>
+              <li><span class="check">✓</span> Weekly thinking report</li>
+              <li><span class="check">✓</span> Voice input (Whisper)</li>
+              <li class="disabled"><span class="cross">–</span> Image upload</li>
+              <li class="disabled"><span class="cross">–</span> Priority support</li>
+            </ul>
+            <button class="plan-cta outline" onclick="alert('Sign up flow would begin here')">Get started</button>
+          </div>
+        </div>
+
+        <!-- Pro (Featured) -->
+        <div class="plan-card featured">
+          <div class="plan-popular-badge">Most popular</div>
+          <div class="plan-header">
+            <div class="plan-name">Pro</div>
+            <div class="plan-tagline">For serious IB students preparing for final assessments</div>
+            <div class="plan-price">
+              <span class="plan-price-currency">₹</span>
+              <span class="plan-price-amount" id="pro-price">1,000</span>
+              <span class="plan-price-period">/month</span>
+            </div>
+            <div class="plan-questions">✦ 350 questions per month</div>
+          </div>
+          <div class="plan-body">
+            <ul class="plan-features">
+              <li><span class="check">✓</span> Everything in Basic</li>
+              <li><span class="check">✓</span> Image upload (photos of notes)</li>
+              <li><span class="check">✓</span> Personalisation engine</li>
+              <li><span class="check">✓</span> Deep question type profiling</li>
+              <li><span class="check">✓</span> Subject-specific calibration</li>
+              <li><span class="check">✓</span> Morning thinking seeds</li>
+              <li><span class="check">✓</span> Deadline countdown nudges</li>
+              <li><span class="check">✓</span> Priority support</li>
+            </ul>
+            <button class="plan-cta primary" onclick="alert('Sign up flow would begin here')">Get started →</button>
+          </div>
+        </div>
+
+        <!-- Elite -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="plan-name">Elite</div>
+            <div class="plan-tagline">For students aiming for 7s across all assessments</div>
+            <div class="plan-price">
+              <span class="plan-price-currency">₹</span>
+              <span class="plan-price-amount" id="elite-price">2,000</span>
+              <span class="plan-price-period">/month</span>
+            </div>
+            <div class="plan-questions">✦ 800 questions per month</div>
+          </div>
+          <div class="plan-body">
+            <ul class="plan-features">
+              <li><span class="check">✓</span> Everything in Pro</li>
+              <li><span class="check">✓</span> Unlimited subject sessions</li>
+              <li><span class="check">✓</span> Semantic memory (past gaps injected)</li>
+              <li><span class="check">✓</span> School coordinator dashboard</li>
+              <li><span class="check">✓</span> Parent/guardian progress view</li>
+              <li><span class="check">✓</span> Monthly 1:1 review session</li>
+              <li><span class="check">✓</span> Direct WhatsApp support</li>
+              <li><span class="check">✓</span> Early access to new features</li>
+            </ul>
+            <button class="plan-cta outline" onclick="alert('Sign up flow would begin here')">Get started</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- School pricing note -->
+      <div style="text-align:center;padding:40px 0 20px;">
+        <p style="font-size:15px;color:var(--stone);">Running a school pilot? <a onclick="showPage('schools')" style="color:var(--forest);font-weight:600;cursor:pointer;text-decoration:underline;">See school pricing →</a></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="faq-header">
+        <span class="section-tag">Questions</span>
+        <h2 class="section-headline">The honest answers.</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-q">Will Mirra write my essay for me?</div>
+          <div class="faq-a"><strong>No. That's the point.</strong> Mirra will never write a sentence of your essay, argument, or conclusion. An IB examiner has read 10,000 essays and immediately recognises AI-written work — and a 1 on IB's academic integrity scale. Mirra builds the thinking behind the essay. You write the essay.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What does a "question" count as?</div>
+          <div class="faq-a">Each Socratic exchange with the main Claude Sonnet model counts as one question. Classification, gap detection, and morning check-ins run on a faster model and don't count against your quota. Questions reset on the 1st of every month.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I use Mirra for all IB subjects?</div>
+          <div class="faq-a">Yes. Mirra adapts its questioning approach to your specific subjects — empirical for Sciences, interpretive for Literature, causal for History, proof-based for Maths. The Socratic method applies across all knowledge areas, including TOK.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How is this different from ChatGPT or Claude?</div>
+          <div class="faq-a">Generic AI gives you answers. <strong>Mirra never gives answers.</strong> The system prompt is built specifically around IB Socratic pedagogy, with five decision steps, seven question types, and emotional signal detection. It's not a chatbot — it's a purpose-built thinking companion for the IB.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is my conversation data private?</div>
+          <div class="faq-a">Yes. Your conversation data is stored securely and never shared with third parties. You can export all your data at any time, and a full account deletion removes everything from our systems including reasoning gap history and session transcripts.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Does Mirra work for IGCSE and A-Levels too?</div>
+          <div class="faq-a">Yes. Mirra has a "short arc" mode for IGCSE and A-Level exam preparation — 3 to 4 exchanges to probe the core idea, then a bridge to application. The same question types apply, but depth is calibrated for the assessment style.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I cancel anytime?</div>
+          <div class="faq-a">Yes. No lock-in, no penalties. Cancel before your next billing date and you keep access until the end of your paid period. Your reasoning gap history and session transcripts are preserved even after cancellation.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">I'm a parent. Should I sign my child up?</div>
+          <div class="faq-a">Mirra is designed for students aged 15–19 working on IB and IGCSE curricula. The platform builds genuine intellectual independence — the opposite of academic dependency. If you want your child to develop real thinking skills, not just better grades, Mirra is designed for exactly that.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="final-cta">
+    <div class="final-cta-bg"></div>
+    <div class="container-narrow">
+      <h2>Start free. <em>Think better.</em></h2>
+      <p>20 questions. No card. The rest is up to you.</p>
+      <div class="final-cta-actions">
+        <a class="btn-gold" href="#">Start free trial →</a>
+        <a class="btn-secondary" style="color:rgba(247,243,235,0.7);border-color:rgba(247,243,235,0.2);" onclick="showPage('schools')">I'm a school</a>
+      </div>
+      <p class="final-cta-note">Used in 40+ IB schools · 2,400+ students · India's first Socratic AI tutor</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand-name">mirra</div><p class="footer-brand-desc">Socratic AI for IB and IGCSE students.</p></div>
+        <div><div class="footer-col-title">Product</div><ul class="footer-links"><li><a onclick="showPage('how')">How it works</a></li><li><a onclick="showPage('features')">Features</a></li></ul></div>
+        <div><div class="footer-col-title">Students</div><ul class="footer-links"><li><a>IB DP</a></li><li><a>IGCSE</a></li></ul></div>
+        <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a onclick="showPage('about')">Philosophy</a></li><li><a>Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span class="footer-copy">© 2025 Mirra.</span></div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE: FOR SCHOOLS -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page" id="page-schools">
+
+  <div class="schools-hero" style="padding-top:140px;">
+    <div class="container">
+      <div class="schools-hero-grid">
+        <div>
+          <span class="problem-label">For IB World Schools</span>
+          <h1>The thinking tool your <em>IB Coordinator</em> has been waiting for.</h1>
+          <p>Mirra gives every student in your cohort access to the kind of Socratic intellectual challenge that used to be available only to students whose parents could afford ₹5,000/hour tutors.</p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;">
+            <a class="btn-gold" href="mailto:schools@mirra.app">Request a free pilot →</a>
+            <a class="btn-secondary" style="color:rgba(247,243,235,0.8);border-color:rgba(247,243,235,0.2);" onclick="showPage('pricing')">See school pricing</a>
+          </div>
+          <div class="trial-pills" style="margin-top:28px;">
+            <span class="trial-pill">✦ 30 students</span>
+            <span class="trial-pill">✦ 30 days free</span>
+            <span class="trial-pill">✦ No setup needed</span>
+            <span class="trial-pill">✦ Weekly coordinator report</span>
+          </div>
+        </div>
+        <div>
+          <!-- Dashboard Preview -->
+          <div class="dashboard-preview">
+            <div class="dash-header">
+              <div class="dash-dot"></div>
+              <div class="dash-dot"></div>
+              <div class="dash-dot"></div>
+              <div class="dash-title">mirra / coordinator dashboard</div>
+            </div>
+            <div class="dash-body">
+              <div class="dash-row-title">IB DP Cohort · 32 students · This week</div>
+              <div class="dash-student-row">
+                <div class="dash-student-av">👩🏽</div>
+                <div>
+                  <div class="dash-student-name">Priya Sharma</div>
+                  <div class="dash-student-meta">TOK Essay · 1 breakthrough this week</div>
+                </div>
+                <div class="dash-student-sessions">8 sessions</div>
+              </div>
+              <div class="dash-student-row">
+                <div class="dash-student-av">🧑🏾</div>
+                <div>
+                  <div class="dash-student-name">Arjun Mehta</div>
+                  <div class="dash-student-meta">Extended Essay · Causal reasoning pattern flagged</div>
+                </div>
+                <div class="dash-student-sessions">5 sessions</div>
+              </div>
+              <div class="dash-student-row">
+                <div class="dash-student-av">👩🏻</div>
+                <div>
+                  <div class="dash-student-name">Sofia Kapoor</div>
+                  <div class="dash-student-meta">Biology IA · Strong methodology thinking</div>
+                </div>
+                <div class="dash-student-sessions">11 sessions</div>
+              </div>
+              <div style="margin-top:16px;">
+                <div class="dash-row-title">Common patterns this week</div>
+                <div class="dash-gap-tag"><div class="dash-gap-dot"></div><div class="dash-gap-text">Counterclaim engagement — 8 students</div></div>
+                <div class="dash-gap-tag"><div class="dash-gap-dot"></div><div class="dash-gap-text">Evidence specificity — 5 students</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- School Stats -->
+  <section style="background:var(--ivory-2);padding:80px 0;">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(26,61,43,0.08);border-radius:16px;overflow:hidden;border:1px solid rgba(26,61,43,0.08);">
+        <div style="background:var(--white);padding:36px 28px;text-align:center;">
+          <div style="font-family:var(--font-display);font-size:52px;font-weight:700;color:var(--forest);letter-spacing:-2px;line-height:1;margin-bottom:10px;">40+</div>
+          <div style="font-size:14px;color:var(--stone);line-height:1.4;">IB World Schools using Mirra</div>
+        </div>
+        <div style="background:var(--white);padding:36px 28px;text-align:center;">
+          <div style="font-family:var(--font-display);font-size:52px;font-weight:700;color:var(--forest);letter-spacing:-2px;line-height:1;margin-bottom:10px;">2,400+</div>
+          <div style="font-size:14px;color:var(--stone);line-height:1.4;">Active student users</div>
+        </div>
+        <div style="background:var(--white);padding:36px 28px;text-align:center;">
+          <div style="font-family:var(--font-display);font-size:52px;font-weight:700;color:var(--forest);letter-spacing:-2px;line-height:1;margin-bottom:10px;">68%</div>
+          <div style="font-size:14px;color:var(--stone);line-height:1.4;">of pilot students return next day</div>
+        </div>
+        <div style="background:var(--white);padding:36px 28px;text-align:center;">
+          <div style="font-family:var(--font-display);font-size:52px;font-weight:700;color:var(--forest);letter-spacing:-2px;line-height:1;margin-bottom:10px;">4.8★</div>
+          <div style="font-size:14px;color:var(--stone);line-height:1.4;">Average rating from IB Coordinators</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits for schools -->
+  <section class="benefits-section">
+    <div class="container">
+      <span class="section-tag">Why schools choose Mirra</span>
+      <h2 class="section-headline">What Mirra gives <em>your school</em></h2>
+      <div class="benefits-grid">
+        <div class="benefit-card animate in d1">
+          <span class="benefit-icon">📊</span>
+          <div class="benefit-title">Coordinator Dashboard</div>
+          <div class="benefit-body">See every student's session count, active thinking patterns, breakthrough rate, and subject coverage in a single view. Know which students are struggling before they come to you.</div>
+        </div>
+        <div class="benefit-card animate in d2">
+          <span class="benefit-icon">📋</span>
+          <div class="benefit-title">Weekly Cohort Report</div>
+          <div class="benefit-body">Auto-generated every Sunday: which reasoning patterns are most common across your cohort this week, which students need intervention, which are thriving. Delivered to your inbox.</div>
+        </div>
+        <div class="benefit-card animate in d3">
+          <span class="benefit-icon">👥</span>
+          <div class="benefit-title">Class Management</div>
+          <div class="benefit-body">Create cohorts, add students via CSV, organise by programme or subject. Students sign in with their school Google accounts — zero friction onboarding.</div>
+        </div>
+        <div class="benefit-card animate in d4">
+          <span class="benefit-icon">🎓</span>
+          <div class="benefit-title">IB-Specific Depth</div>
+          <div class="benefit-body">Mirra is calibrated for TOK, Extended Essay, Internal Assessment, and exam preparation across all Group 1–6 subjects. Not a general AI — a purpose-built IB thinking tool.</div>
+        </div>
+        <div class="benefit-card animate in d5">
+          <span class="benefit-icon">🔒</span>
+          <div class="benefit-title">Academic Integrity Safe</div>
+          <div class="benefit-body">Mirra never writes content. Every session transcript is available for review. The system is designed to develop authentic thinking — not to produce plagiarisable output.</div>
+        </div>
+        <div class="benefit-card animate in d6">
+          <span class="benefit-icon">₹</span>
+          <div class="benefit-title">School Pricing</div>
+          <div class="benefit-body">₹500/student/month billed annually. A 50-student cohort = ₹3,00,000/year — a fraction of what your students pay individual tutors for a fraction of the intellectual benefit.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pilot CTA -->
+  <section class="pilot-section">
+    <div class="container">
+      <div class="pilot-inner">
+        <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:16px;">For IB Coordinators</span>
+        <h2>Run a <em>free 30-day pilot</em> with your cohort.</h2>
+        <p>No procurement process. No IT setup. No commitment. Just 30 students, 30 days, unlimited questions, and a weekly report that tells you whether it worked.</p>
+        <div class="pilot-steps">
+          <div class="pilot-step">
+            <div class="pilot-step-num">1</div>
+            <div class="pilot-step-title">Email us</div>
+            <div class="pilot-step-body">One email to schools@mirra.app — we'll arrange a 15-minute call</div>
+          </div>
+          <div class="pilot-step">
+            <div class="pilot-step-num">2</div>
+            <div class="pilot-step-title">We set up your cohort</div>
+            <div class="pilot-step-body">CSV upload of student emails, Google SSO configured, done in 24 hours</div>
+          </div>
+          <div class="pilot-step">
+            <div class="pilot-step-num">3</div>
+            <div class="pilot-step-title">30 days of data</div>
+            <div class="pilot-step-body">Weekly reports, coordinator dashboard, and a final pilot summary</div>
+          </div>
+        </div>
+        <a class="btn-gold" href="mailto:schools@mirra.app">Request your free pilot →</a>
+        <p style="font-size:13px;color:rgba(247,243,235,0.35);margin-top:20px;font-family:var(--font-mono);">No credit card · No contract · School data stays with your school</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand-name">mirra</div><p class="footer-brand-desc">Socratic AI for IB and IGCSE students.</p></div>
+        <div><div class="footer-col-title">Product</div><ul class="footer-links"><li><a onclick="showPage('how')">How it works</a></li><li><a onclick="showPage('features')">Features</a></li><li><a onclick="showPage('pricing')">Pricing</a></li></ul></div>
+        <div><div class="footer-col-title">Students</div><ul class="footer-links"><li><a>IB DP</a></li><li><a>IGCSE</a></li></ul></div>
+        <div><div class="footer-col-title">Schools</div><ul class="footer-links"><li><a href="mailto:schools@mirra.app">Request pilot</a></li><li><a>School pricing</a></li><li><a>Privacy policy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span class="footer-copy">© 2025 Mirra.</span></div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE: PHILOSOPHY / ABOUT -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page" id="page-about">
+
+  <div class="about-hero" style="padding-top:140px;">
+    <div class="container">
+      <div class="about-hero-grid">
+        <div>
+          <span class="section-tag">Our philosophy</span>
+          <h1>We built Mirra because <em>answers are cheap.</em></h1>
+          <p>The internet is full of model TOK essays, annotated IB exemplars, and AI tools that will write your Extended Essay in four minutes. None of them help. They make the problem worse.</p>
+          <p>The problem isn't that IB students don't have enough information. It's that they've never had a conversation where someone cared more about their thinking than about giving them the right answer.</p>
+          <div class="about-pull-quote">
+            <p>"The unexamined argument is not worth writing."</p>
+          </div>
+          <p>Mirra is our attempt to give every IB student — not just the ones whose parents can afford the right tutors — access to the kind of intellectual challenge that actually changes how you think.</p>
+        </div>
+        <div class="about-visual">
+          <div class="about-visual-bg"></div>
+          <div class="about-quote-card">
+            <blockquote>"I used every essay service. None of them helped me understand why my argument was weak. Three sessions with Mirra, and I finally got it."</blockquote>
+            <div class="about-quote-attribution">
+              <div class="about-quote-av">P</div>
+              <div>
+                <div class="about-quote-name">Priya S.</div>
+                <div class="about-quote-role">IB DP Year 2 · Mumbai · TOK Essay</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Principles -->
+  <section class="philosophy-section">
+    <div class="container">
+      <div class="philosophy-intro">
+        <span class="section-tag" style="text-align:center;display:block;">Four principles</span>
+        <h2 class="section-headline" style="text-align:center;">What we believe<br><em>about learning.</em></h2>
+        <p style="margin-top:20px;font-size:17px;color:var(--stone);text-align:center;line-height:1.7;">These aren't product features. They're the convictions that determine every decision we make about what Mirra should and shouldn't do.</p>
+      </div>
+      <div class="principles-grid">
+        <div class="principle animate in d1">
+          <div class="principle-num">1</div>
+          <div class="principle-title">Understanding cannot be transferred. It must be constructed.</div>
+          <div class="principle-body">You cannot give a student understanding the way you can give them information. Understanding is built, by the student, through the act of working something out. The teacher's job — and Mirra's job — is not to shortcut that process. It's to make the process possible.</div>
+        </div>
+        <div class="principle animate in d2">
+          <div class="principle-num">2</div>
+          <div class="principle-title">The right question is worth a hundred explanations.</div>
+          <div class="principle-body">Explanations create the illusion of understanding. The student hears the teacher's reasoning and mistakes it for their own. One precisely-aimed question — one that forces the student to reason from their own premises — creates more intellectual progress than an hour of lecture.</div>
+        </div>
+        <div class="principle animate in d3">
+          <div class="principle-num">3</div>
+          <div class="principle-title">Academic integrity is not a rule. It's a precondition for learning.</div>
+          <div class="principle-body">When a student submits AI-written work as their own, they don't just break a rule. They cheat themselves. They lose the only chance they had to actually work something out. Mirra refuses to write because it is, at its core, on the student's side.</div>
+        </div>
+        <div class="principle animate in d4">
+          <div class="principle-num">4</div>
+          <div class="principle-title">Intellectual warmth and intellectual rigour are not opposites.</div>
+          <div class="principle-body">The best teachers are warm and demanding at the same time. They make you feel like a thinker even when you're wrong. They push hard on your assumptions while making you feel respected. Mirra is designed to hold this tension — never preachy, never harsh, always precise.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="section-tag">Student voices</span>
+        <h2 class="section-headline">What real <em>thinking</em> feels like.</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card animate in d1">
+          <div class="testimonial-quote-mark">"</div>
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">I've tried three different AI tools for my TOK essay. They all just wrote for me, which was useless — I still didn't understand why my argument was circular. Mirra asked me three questions and I figured it out myself. That's what actually helps.</div>
+          <div class="testimonial-author">
+            <div class="testimonial-av">👩🏽</div>
+            <div>
+              <div class="testimonial-name">Priya Sharma</div>
+              <div class="testimonial-detail">IB DP Yr 2 · Delhi · TOK Essay</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card animate in d2">
+          <div class="testimonial-quote-mark">"</div>
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">My EE supervisor told me my argument had no structure. I didn't know what she meant. After four sessions with Mirra I could see exactly where my reasoning broke down. The breakthrough moment was genuinely exciting — I'd never felt that in studying before.</div>
+          <div class="testimonial-author">
+            <div class="testimonial-av">🧑🏾</div>
+            <div>
+              <div class="testimonial-name">Arjun Mehta</div>
+              <div class="testimonial-detail">IB DP Yr 2 · Mumbai · Economics EE</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card animate in d3">
+          <div class="testimonial-quote-mark">"</div>
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">I was sceptical because I thought AI would just explain things at me. It doesn't. Every response is a question. At first I found it frustrating. Now I find it addictive — there's something satisfying about working something out properly.</div>
+          <div class="testimonial-author">
+            <div class="testimonial-av">👩🏻</div>
+            <div>
+              <div class="testimonial-name">Sofia Kapoor</div>
+              <div class="testimonial-detail">IGCSE · Bangalore · Biology + History</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:48px;">
+        <p style="font-family:var(--font-display);font-size:22px;font-style:italic;color:var(--stone);max-width:560px;margin:0 auto;line-height:1.6;">"The questions Mirra asks are genuinely difficult. But they're my questions — asked back at me. That's the difference."</p>
+        <p style="font-family:var(--font-mono);font-size:12px;color:var(--pebble);margin-top:16px;letter-spacing:0.05em;">— Nadia Rahman, IB DP Year 1, Hyderabad</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="final-cta">
+    <div class="final-cta-bg"></div>
+    <div class="container-narrow">
+      <h2>Ready to think <em>for yourself?</em></h2>
+      <p>20 questions. No card. Just you and Mirra.</p>
+      <div class="final-cta-actions">
+        <a class="btn-gold" onclick="showPage('pricing')">Start free trial →</a>
+        <a class="btn-secondary" style="color:rgba(247,243,235,0.7);border-color:rgba(247,243,235,0.2);" onclick="showPage('schools')">I represent a school</a>
+      </div>
+      <p class="final-cta-note">IB DP · IB MYP · IGCSE · A-Levels · India</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">mirra</div>
+          <p class="footer-brand-desc">Socratic AI for IB and IGCSE students. We help you think — not just learn.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Product</div>
+          <ul class="footer-links">
+            <li><a onclick="showPage('how')">How it works</a></li>
+            <li><a onclick="showPage('features')">Features</a></li>
+            <li><a onclick="showPage('pricing')">Pricing</a></li>
+            <li><a onclick="showPage('schools')">For Schools</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Students</div>
+          <ul class="footer-links">
+            <li><a>IB DP</a></li>
+            <li><a>IB MYP</a></li>
+            <li><a>IGCSE</a></li>
+            <li><a>A-Levels</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a onclick="showPage('about')">Philosophy</a></li>
+            <li><a>Privacy Policy</a></li>
+            <li><a>Terms of Use</a></li>
+            <li><a href="mailto:hello@mirra.app">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Mirra. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a>Privacy</a>
+          <a>Terms</a>
+          <a href="mailto:hello@mirra.app">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- JAVASCRIPT -->
+<!-- ═══════════════════════════════════════════ -->
+<script>
+const pages = ['home', 'how', 'features', 'pricing', 'schools', 'about'];
+
+function showPage(id) {
+  // Hide all pages
+  pages.forEach(p => {
+    const el = document.getElementById('page-' + p);
+    if (el) el.classList.remove('active');
+    const nav = document.getElementById('nav-' + p);
+    if (nav) nav.classList.remove('active');
+  });
+
+  // Show target
+  const target = document.getElementById('page-' + id);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    triggerAnimations(target);
+  }
+
+  const navEl = document.getElementById('nav-' + id);
+  if (navEl) navEl.classList.add('active');
+}
+
+// Scroll-triggered animations
+function triggerAnimations(container) {
+  const elements = container.querySelectorAll('.animate');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  elements.forEach(el => {
+    el.classList.remove('in');
+    observer.observe(el);
+  });
+}
+
+// Sticky nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('main-nav');
+  if (window.scrollY > 40) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// Pricing toggle
+function setToggle(mode) {
+  document.getElementById('toggle-monthly').classList.toggle('active', mode === 'monthly');
+  document.getElementById('toggle-annual').classList.toggle('active', mode === 'annual');
+
+  const prices = {
+    monthly: { basic: '500', pro: '1,000', elite: '2,000' },
+    annual:  { basic: '400', pro: '800',   elite: '1,600' }
+  };
+
+  const p = prices[mode];
+  document.getElementById('basic-price').textContent = p.basic;
+  document.getElementById('pro-price').textContent = p.pro;
+  document.getElementById('elite-price').textContent = p.elite;
+}
+
+// Initial page load animations
+document.addEventListener('DOMContentLoaded', () => {
+  triggerAnimations(document.getElementById('page-home'));
+});
+</script>
+
+</body>
+</html>
